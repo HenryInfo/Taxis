@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp" >
+
+    <ImageView
+        android:id="@+id/imgConductor"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:src="@drawable/taxi" />
+
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/imgConductor"
+        android:paddingLeft="5dp"
+        android:text="Conductor: Consultando..."
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtNombre"
+        android:layout_toRightOf="@id/imgConductor"
+        android:paddingLeft="5dp"
+        android:text="Teléfono: Consultando..."
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtPlaca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtColor"
+        android:layout_toRightOf="@id/imgConductor"
+        android:paddingLeft="5dp"
+        android:text="Placa: Consultando..."
+        android:textSize="18sp" />
+
+</RelativeLayout>

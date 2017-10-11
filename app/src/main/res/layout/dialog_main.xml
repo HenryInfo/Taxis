@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/dni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:hint="Ingrese DNI"
+        android:inputType="number"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.21"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/registro"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nombres"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:hint="Nombres"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <EditText
+                android:id="@+id/apaterno"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:hint="Apellido paterno"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <EditText
+                android:id="@+id/amaterno"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:hint="Apellido materno"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <EditText
+                android:id="@+id/telefono"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:hint="Teléfono"
+                android:inputType="phone"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/enviarSolicitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="Solicitar" />
+    </LinearLayout>
+</LinearLayout>

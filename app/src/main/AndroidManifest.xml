@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="pe.bravos.taxis">
+
+    <uses-permission android:name="pe.bravos.taxis.permission.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <application
+        android:name="android.support.multidex.MultiDexApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logotaxi"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:node="replace">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDPt2sc_jYBhNXu48FikO9-bc0eNfbB2-A" />
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".PreferencesActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SignupActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PerfilActivity"
+            android:label="@string/title_activity_perfil"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyMapActivity"
+            android:label="@string/app_name" />
+
+        <service
+            android:name=".servicio.TTSService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="false" />
+
+    </application>
+
+</manifest>

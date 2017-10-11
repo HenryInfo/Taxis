@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:id="@+id/LinearLayoutMyOrder"
+    android:weightSum="1">
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parent"
+        tools:context=".MyMapActivity" >
+
+        <fragment
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            tools:context="pe.bravos.taxis.MyMapActivity" />
+
+    </FrameLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#b4000000"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.65"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Conductor: "
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/txtColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Taxi"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/txtPlaca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Placa del Taxi"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.35"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTiempo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Tiempo"
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:id="@+id/lblTiempo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Calculando..."
+                android:textColor="#fff"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+        <pe.bravos.taxis.RoundedImageView
+            android:id="@+id/ImageTaxi"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="70dp"
+            android:src="@drawable/taxi" />
+
+        <pe.bravos.taxis.RoundedImageView
+            android:id="@+id/imgChofer"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="70dp"
+            android:layout_marginLeft="150dp"
+            android:src="@drawable/taxidriver" />
+
+</RelativeLayout>

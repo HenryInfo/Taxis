@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/pedidoRapido"
+    android:layout_height="match_parent"
+    tools:context="pe.bravos.taxis.fragment.OrdenRapida">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:id="@+id/registro"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_place"
+                android:text="Escriba su dirección"
+                android:textAlignment="viewStart"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_weight="0.04" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1">
+
+                <EditText
+                    android:id="@+id/txtOrigen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ej. Av. Atahualpa 540"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="294dp"
+                android:layout_height="94dp"
+                android:background="@android:color/holo_orange_dark"
+                android:drawableRight="@drawable/ic_send"
+                android:text="Solicitar"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </FrameLayout>

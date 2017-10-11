@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="pe.bravos.taxis.MainActivity">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parent"
+        tools:context="pe.bravos.taxis.MainActivity">
+        <com.google.android.gms.maps.MapView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="pe.bravos.taxis.MainActivity" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="#7F000000"
+            android:id="@+id/lblPedirTaxi"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtMyUbicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:text="Buscando tu Ubicación..."
+                android:ellipsize="marquee"
+                android:textAlignment="center"
+                android:textColor="@color/cast_intro_overlay_button_background_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSilenciar"
+            android:background="#00ffffff"
+            android:layout_marginStart="13dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_no_sound"
+            android:visibility="gone"
+            android:layout_alignParentStart="true" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LinearPedidoOpciones"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:orientation="horizontal"
+        android:background="@drawable/border_redondo"
+        android:layout_alignParentStart="true">
+        <LinearLayout
+            android:id="@+id/lyOrigenDestino"
+            android:layout_width="0dp"
+            android:layout_weight="0.75"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/textOrigen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Origen"
+                android:textColor="@color/cast_intro_overlay_button_background_color"
+                />
+            <EditText
+                android:id="@+id/textDestino"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Destino"
+                android:textColor="@color/cast_intro_overlay_button_background_color"
+                />
+
+            <TextView
+                android:id="@+id/txtAyuda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_redondo_inferior"
+                android:gravity="center"
+                android:text="Seleccione un taxi"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/UnidadSelecionada"
+                android:gravity="center"
+                android:textColor="@color/cast_intro_overlay_button_background_color"
+                android:text="Placa"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_redondo_inferior"
+                android:id="@+id/btnSolicitar"
+                android:visibility="gone"
+                android:textColor="#fff"
+                android:text="Solicitar"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:id="@+id/imgUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_backup" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/detallePedido"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#b4000000"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.65"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Conductor: "
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/txtColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Taxi"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/txtPlaca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Placa del Taxi"
+                android:textColor="#fff"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.35"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Estado"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblTiempo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Calculando..."
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <pe.bravos.taxis.RoundedImageView
+        android:id="@+id/ImageTaxi"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/taxiico" />
+
+    <pe.bravos.taxis.RoundedImageView
+        android:id="@+id/imgChofer"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="70dp"
+        android:src="@drawable/taxidriver" />
+    <Button
+        android:id="@+id/btnAbordar"
+        android:layout_width="120dp"
+        android:visibility="gone"
+        android:layout_height="30dp"
+        android:text="Abordar"
+        android:textColor="#fff"
+        android:background="@drawable/border_redondo_abordar"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
+        android:layout_marginLeft="180dp"
+
+        />
+
+</RelativeLayout>
+
+
+

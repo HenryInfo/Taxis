@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Datos de Usuario" >
+
+        <EditTextPreference
+            android:key="pDni"
+            android:title="DNI"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese su DNI" />
+
+        <EditTextPreference
+            android:key="pNombre"
+            android:title="Nombres"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese sus Nombres"/>
+
+        <EditTextPreference
+            android:key="pPaterno"
+            android:title="Apellido Paterno"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese su Apellido Paterno"/>
+
+        <EditTextPreference
+
+            android:key="pMaterno"
+            android:title="Apellido Materno"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese su Apellido Materno"/>
+
+        <EditTextPreference
+            android:key="pTelefono"
+            android:title="Telefono"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese su Telefono"/>
+
+        <EditTextPreference
+            android:key="pNoti"
+            android:title="Notificación"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese su Notificación"/>
+
+        <EditTextPreference
+            android:key="pDireccionOrigen"
+            android:title="Dirección Origen"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese su Dirección Origen"/>
+
+        <EditTextPreference
+            android:key="pDireccionDestino"
+            android:title="Dirección Destino"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese su Dirección Origen"/>
+
+        <EditTextPreference
+            android:key="pTienePedido"
+            android:title="Tiene Pedido"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese su Tiene Pedido"/>
+
+        <EditTextPreference
+            android:key="idMyRuta"
+            android:title="ID My Ruta"
+            android:summary="Identifica al usuario de la aplicación"
+            android:dialogTitle="Ingrese su ID My Ruta"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
