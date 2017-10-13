@@ -29,6 +29,7 @@ import com.google.android.gms.location.LocationListener;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
@@ -115,6 +116,7 @@ import java.util.Objects;
 
 import pe.bravos.taxis.CustomInfoWindowAdapter;
 import pe.bravos.taxis.DataParser;
+import pe.bravos.taxis.EncenderPantallaActivity;
 import pe.bravos.taxis.MainActivity;
 import pe.bravos.taxis.MetodosComunes;
 import pe.bravos.taxis.R;
@@ -175,6 +177,8 @@ public class principal extends Fragment implements OnMapReadyCallback, View.OnCl
     private boolean banderadatosAuto = false;
     ArrayList<Ruta> lista;
     ListView listView;
+    private static final int MY_PERMISSIONS_REQUEST_WAKE_LOCK= 1001;
+
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
 
     //Marker inforWindows
@@ -456,6 +460,29 @@ public class principal extends Fragment implements OnMapReadyCallback, View.OnCl
                 intentTalk.putExtra("talk", text);
                 getActivity().getBaseContext().startService(intentTalk);
             }
+            Intent i = new Intent(getContext(), EncenderPantallaActivity.class);
+            startActivityForResult(i, 1);
+            int permissionCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WAKE_LOCK);
+            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WAKE_LOCK}, MY_PERMISSIONS_REQUEST_WAKE_LOCK);
+            } else {
+                turnScreenOn(50, getContext());
+            }
+        }
+    }
+    public static void turnScreenOn(int sec, final Context context)
+    {
+        final int seconds = sec;
+
+        PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+        boolean isScreenOn = pm.isScreenOn();
+
+        if( !isScreenOn )
+        {
+            PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK |PowerManager.ACQUIRE_CAUSES_WAKEUP |PowerManager.ON_AFTER_RELEASE,"MyLock");
+            wl.acquire(seconds*1000);
+            PowerManager.WakeLock wl_cpu = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"MyCpuLock");
+            wl_cpu.acquire(seconds*1000);
         }
     }
 
@@ -1758,12 +1785,19 @@ public class principal extends Fragment implements OnMapReadyCallback, View.OnCl
 
         android.location.LocationListener locationListenerRED = new MyLocationReD();
         locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
+        if (isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION,getContext())) {
 
-        locationManager.requestLocationUpdates(
-                LocationManager.PASSIVE_PROVIDER, 10000, 1, locationListenerRED);
+            locationManager.requestLocationUpdates(
+                    LocationManager.PASSIVE_PROVIDER, 10000, 1, locationListenerRED);        }
+        else {
+            Toast.makeText(getContext(), "Insufficent Permissions, Please grant this app GPS permissions to continue.",Toast.LENGTH_LONG).show();
+        }
 
     }
-
+    public static boolean isPermissionGranted(String permission, Context c) {
+        //int res = ContextCompat.checkSelfPermission(context, permission);
+        return (ContextCompat.checkSelfPermission(c, permission) == PackageManager.PERMISSION_GRANTED);
+    }
     public class MyLocationReD implements android.location.LocationListener {
 
 
