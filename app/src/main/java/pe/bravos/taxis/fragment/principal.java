@@ -143,6 +143,7 @@ public class principal extends Fragment implements OnMapReadyCallback, View.OnCl
     private static ArrayList<Address> retList;
     public static GoogleApiClient mGoogleApiClient;
     public static GoogleMap mMap;
+    public MainActivity activity;
     NotificationManager manager;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     Geocoder geocoder;
@@ -460,14 +461,17 @@ public class principal extends Fragment implements OnMapReadyCallback, View.OnCl
                 intentTalk.putExtra("talk", text);
                 getActivity().getBaseContext().startService(intentTalk);
             }
-            Intent i = new Intent(getContext(), EncenderPantallaActivity.class);
-            startActivityForResult(i, 1);
-            int permissionCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WAKE_LOCK);
-            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WAKE_LOCK}, MY_PERMISSIONS_REQUEST_WAKE_LOCK);
-            } else {
-                turnScreenOn(50, getContext());
+            if(getActivity()!=null){
+                Intent i = new Intent(getActivity(), EncenderPantallaActivity.class);
+                startActivityForResult(i, 1);
+                int permissionCheck = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WAKE_LOCK);
+                if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WAKE_LOCK}, MY_PERMISSIONS_REQUEST_WAKE_LOCK);
+                } else {
+                    turnScreenOn(50, getActivity());
+                }
             }
+
         }
     }
     public static void turnScreenOn(int sec, final Context context)
@@ -1274,7 +1278,8 @@ public class principal extends Fragment implements OnMapReadyCallback, View.OnCl
                     }
                     //startRepeatingTaskNotificacion();
                     //callAsynchronousTask();
-                    Toast.makeText(getActivity().getBaseContext(), "Su pedido a sido cancelado, actualizando aplicación", Toast.LENGTH_LONG).show();
+                    if(getActivity()!=null)
+                        Toast.makeText(getActivity().getBaseContext(), "Su pedido a sido cancelado, actualizando aplicación", Toast.LENGTH_LONG).show();
                     reiniciarFragment();
                     startTaskTaxisDisponibles();
                     stopTaskTasiSolicitado();
@@ -1686,8 +1691,10 @@ public class principal extends Fragment implements OnMapReadyCallback, View.OnCl
     }
 
     public void reiniciarFragment(){
-        final FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_main, new principal()).commit();
+        if(getFragmentManager()!=null){
+            final FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.content_main, new principal()).commit();
+        }
     }
 
     public void actualizarMapa() {
@@ -1785,7 +1792,7 @@ public class principal extends Fragment implements OnMapReadyCallback, View.OnCl
 
         android.location.LocationListener locationListenerRED = new MyLocationReD();
         locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
-        if (isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION,getContext())) {
+        if (isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION,getActivity())) {
 
             locationManager.requestLocationUpdates(
                     LocationManager.PASSIVE_PROVIDER, 10000, 1, locationListenerRED);        }

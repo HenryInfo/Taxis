@@ -60,22 +60,29 @@ public class SignupActivity extends AppCompatActivity {
         btnRegistar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dni = iptDni.getText().toString();
-                nombres = iptNombre.getText().toString();
-                paterno = iptApaterno.getText().toString();
-                materno = iptAmaterno.getText().toString();
-                telefono = iptTelefono.getText().toString();
                 password = iptPassword.getText().toString();
-                rePassword = iptRePassword.getText().toString();
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("pDni", dni);
-                editor.putString("pNombre", nombres);
-                editor.putString("pPaterno", paterno);
-                editor.putString("pMaterno", materno);
-                editor.putString("pTelefono", telefono);
-                editor.commit();
 
-                registrar(dni, nombres, paterno, materno, telefono, password, rePassword);
+                if(password.length() > 2){
+                    rePassword = iptRePassword.getText().toString();
+                    dni = iptDni.getText().toString();
+                    nombres = iptNombre.getText().toString();
+                    paterno = iptApaterno.getText().toString();
+                    materno = iptAmaterno.getText().toString();
+                    telefono = iptTelefono.getText().toString();
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("pDni", dni);
+                    editor.putString("pNombre", nombres);
+                    editor.putString("pPaterno", paterno);
+                    editor.putString("pMaterno", materno);
+                    editor.putString("pTelefono", telefono);
+                    editor.commit();
+                    Toast.makeText(getApplicationContext(), "Registrando!", Toast.LENGTH_SHORT).show();
+
+                    registrar(dni, nombres, paterno, materno, telefono, password, rePassword);
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "Contraseña muy corta!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -127,10 +134,9 @@ public class SignupActivity extends AppCompatActivity {
                     String body=getResponseBody(response);
                     JSONObject respuesta= new JSONObject(body);
                     String estado = respuesta.getString("estado");
-
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     switch (estado){
                         case "1":
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                             break;
                         case "-1":
